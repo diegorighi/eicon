@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Cadastro de cliente</title>
+</head>
+<body>
+
+	<form th:action="@{/cliente/cadastrar}" method="POST">
+		<div class="form-group">
+			<input type="text" name="email" id="email" placeholder="E-Mail" />
+		</div>
+		<div class="form-group">
+			<input type="text" name="nome" id="primeiroNome" placeholder="Nome" />
+		</div>
+		<div class="form-group">
+			<input type="text" name="sobrenome"
+				class="form-control" id="sobrenome" placeholder="Sobrenome" />
+		</div>
+		<div class="form-group">
+			<input type="datetime" name="dataNascimento" id="dataNascimento" />
+		</div>
+		<button type="submit" class="btn btn-sm btn-primary">Salvar</button>
+	</form>
+
+</body>
+</html>
