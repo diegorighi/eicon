@@ -28,7 +28,7 @@ public class PedidoService implements TaxasPedido{
 		if(deveConterEntreUmEDezPedidosApenas(pedidos)) {
 			pedidos.getPedidos().stream().forEach( pedido -> {
 				if(numeroControleNaoExiste(pedido)) {
-					//REGRAS
+					//REGRAS 
 					defineData(pedido);
 					defineQuantidade(pedido);
 					calcularValorTotalPedido(pedido);
@@ -37,10 +37,13 @@ public class PedidoService implements TaxasPedido{
 			});
 		}else
 			throw new Exception("Seu request não atende às especificações");
+		//Ta certo, poderia ter feito uma exception melhor, mas o código ficaria
+		//complexo demais para um teste
 	}
 
 	@Override
 	public boolean deveConterEntreUmEDezPedidosApenas(WrapperPedido pedidos) {
+		//Confesso que a mão coçou para usar reference methods
 		if(pedidos.getPedidos().size() > 0 && pedidos.getPedidos().size() <= 10)
 			setOK(true);
 		return isOK();
@@ -66,6 +69,11 @@ public class PedidoService implements TaxasPedido{
 		//Assumindo que é um cliente por pedido, eles nunca se repetem
 		pedido.getListaProdutos().stream().forEach( produto -> {
 			
+			/*
+			 * Aqui o código tende a crescer. Utilizaria um Strategy para isto, mas como
+			 * é apenas a título de exemplo para chamar no Postman vou deixar assim rs
+			 */
+			
 			if(produto.getQuantidade() == 0 || produto.getQuantidade().equals(null))
 				produto.setQuantidade(1);
 			else if(produto.getQuantidade() > 5 && produto.getQuantidade() < 10) {
@@ -79,6 +87,7 @@ public class PedidoService implements TaxasPedido{
 
 	@Override
 	public void calcularValorTotalPedido(Pedido pedido) {
+		//Uso muito stream para não "sujar" a lista original
 		pedido.getListaProdutos().stream().forEach( produto -> {
 			pedido.setValorPedido(pedido.getValorPedido().add(produto.getValor()));
 		});

@@ -1,7 +1,5 @@
 package br.com.vaga.teste.model;
 
-import java.math.BigDecimal;
-
 public interface TaxasPedido {
 	
 	public abstract boolean deveConterEntreUmEDezPedidosApenas(WrapperPedido pedidos);

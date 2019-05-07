@@ -7,5 +7,5 @@ import br.com.vaga.teste.model.Cliente;
 
 @Repository
 public interface ClienteRepositoy extends CrudRepository<Cliente, String> {
-
+	//Olha a bruxaria do SpringData :)
 }

@@ -22,7 +22,6 @@ public class ExposedEndPointsForIntegration {
 	
 	@Autowired
 	private ClienteService clienteService;
-	
 	@Autowired
 	private PedidoService pedidoService;
 	

@@ -9,6 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/")
 public class DisplayPagesController {
 
+	//Aqui é uma classe que escrevi para facilitar a criação das Entities
+	
 	@GetMapping
 	public ModelAndView index() {
 		return new ModelAndView("index");
